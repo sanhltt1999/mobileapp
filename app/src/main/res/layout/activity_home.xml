@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.HomeActivity">
+
+    <FrameLayout
+        android:background="@drawable/gradient_bg_home"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"/>
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/avatarImageView"
+        android:layout_width="60dp"
+        android:layout_alignParentEnd="true"
+        android:layout_height="60dp"
+        android:layout_alignParentLeft="true"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="12dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="32dp"
+        android:background="@drawable/PierrePerson"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.SelectedCornerRadius"
+        tools:ignore="ObsoleteLayoutParam"
+        android:layout_alignParentRight="true" />
+
+    <TextView
+        android:id="@+id/title1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:text="Hi, Le Sanh"
+        android:textSize="24sp"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="32dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cùng trang trí ngôi nhà\ncủa chúng ta nào!"
+        android:textColor="@color/white"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="32dp"
+        android:textSize="17sp"
+        android:layout_below="@id/title1"/>
+
+    <EditText
+        android:id="@+id/searchEditText"
+        android:layout_marginTop="125dp"
+        android:layout_width="match_parent"
+        android:background="@drawable/input"
+        android:padding="8dp"
+        android:drawablePadding="8dp"
+        android:drawableLeft="@drawable/ic_baseline_search_24"
+        android:layout_marginHorizontal="24dp"
+        android:hint="@string/hint_search"
+        android:layout_height="48dp"
+        tools:ignore="LabelFor" />
+    
+    <ImageView
+        android:id="@+id/itemDesignImageView"
+        android:layout_below="@id/searchEditText"
+        android:layout_marginTop="24dp"
+        android:layout_width="178dp"
+        android:layout_height="50dp"
+        android:padding="8dp"
+        android:layout_marginLeft="24dp"
+        android:background="@drawable/gradient_bg_type_home"
+        android:src="@drawable/ic_baseline_home_24"/>
+
+    <ImageView
+        android:id="@+id/itemDecorationImageView"
+        android:layout_below="@id/searchEditText"
+        android:layout_width="178dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:padding="8dp"
+        android:layout_marginRight="24dp"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/gradient_bg_type_home_no_select"
+        android:src="@drawable/ic_baseline_local_florist_24"
+        android:layout_alignParentRight="true" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@+id/itemDecorationImageView"
+        android:layout_width="match_parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="24dp"
+        android:layout_above="@id/ly"
+        android:layout_height="match_parent"/>
+
+
+    <LinearLayout
+        android:id="@+id/ly"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:weightSum="4">
+
+        <ImageView
+            android:id="@+id/homeImageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:scaleType="center"
+            android:src="@drawable/ic_baseline_home_24" />
+
+
+        <ImageView
+            android:id="@+id/cameraImageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:scaleType="center"
+            android:src="@drawable/ic_baseline_add_shopping_cart_24" />
+
+        <ImageView
+            android:id="@+id/galleryImageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:scaleType="center"
+            android:src="@drawable/ic_baseline_local_shipping_24" />
+
+        <ImageView
+            android:id="@+id/shareImageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:scaleType="center"
+            android:src="@drawable/ic_baseline_person_24" />
+    </LinearLayout>
+
+
+</RelativeLayout>
