@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.detail.DetailActivity">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/productImageView"
+        android:layout_width="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_height="300dp"
+        android:background="@drawable/PierrePerson"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.SelectedCornerRadius2"
+        tools:ignore="ObsoleteLayoutParam"
+        android:layout_margin="32dp"
+        android:layout_alignParentRight="true" />
+
+    <TextView
+        android:id="@+id/nameProductTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Phong ngu siple"
+        android:textSize="21sp"
+        android:textColor="@color/black"
+        android:layout_below="@id/productImageView"
+        android:layout_marginLeft="42dp"/>
+
+    <LinearLayout
+        android:id="@+id/ly1"
+        android:layout_below="@id/nameProductTextView"
+        android:layout_margin="16dp"
+        android:paddingHorizontal="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_baseline_star_24"/>
+
+        <TextView
+            android:id="@+id/staffTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="21sp"
+            android:text="4.5"
+            android:layout_marginLeft="16dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(123 danh gia)"
+            android:layout_gravity="center"
+            android:layout_marginTop="4dp"
+            android:layout_marginLeft="8dp"/>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/black"
+        android:layout_below="@id/ly1"/>
+
+    <TextView
+        android:id="@+id/totalCostTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$145"
+        android:textSize="32sp"
+        android:textColor="@color/black"
+        android:layout_below="@id/line"
+        android:layout_marginLeft="42dp"
+        android:layout_marginTop="8dp"/>
+
+    <LinearLayout
+        android:id="@+id/addLayout"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="42dp"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/totalCostTextView"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:padding="12dp"
+            android:background="@drawable/bg_add_detail"
+            android:src="@drawable/ic_minus_sign"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="5"
+            android:textSize="24sp"
+            android:layout_gravity="center_vertical"
+            android:textColor="@color/black"
+            android:paddingHorizontal="16dp"
+            android:background="@drawable/bg_add_detail"/>
+
+        <ImageView
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:padding="12dp"
+            android:background="@drawable/bg_add_detail"
+            android:src="@drawable/ic_plus"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@id/addLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        android:layout_margin="32dp">
+
+        <Button
+            android:layout_marginHorizontal="4dp"
+            android:background="@drawable/gradient_bg_noselect"
+            android:layout_width="0dp"
+            android:text="Thêm vào giỏ hàng"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <Button
+            android:background="@drawable/gradient_bg_select"
+            android:layout_width="0dp"
+            android:text="Mua hàng"
+            android:layout_marginHorizontal="4dp"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+</RelativeLayout>
