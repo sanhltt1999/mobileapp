@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_alignParentEnd="true"
         android:layout_height="300dp"
-        android:background="@drawable/PierrePerson"
+        android:background="@drawable/pierreperson"
         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.SelectedCornerRadius2"
         tools:ignore="ObsoleteLayoutParam"
         android:layout_margin="32dp"
