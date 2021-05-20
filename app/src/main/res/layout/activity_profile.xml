@@ -9,11 +9,11 @@
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/productImageView"
-        android:layout_width="272dp"
+        android:layout_width="200dp"
         android:layout_alignParentEnd="true"
         android:layout_gravity="center_horizontal"
-        android:layout_height="272dp"
-        android:background="@drawable/pierreperson"
+        android:layout_height="200dp"
+        android:background="@drawable/ic_baseline_person_24"
         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.SelectedCornerRadius2"
         tools:ignore="ObsoleteLayoutParam"
         android:layout_margin="42dp"
@@ -26,11 +26,10 @@
         android:text="Full name"/>
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:text="Le Truong Sanh"
-        android:layout_marginLeft="65dp"
+        android:layout_marginHorizontal="62dp"
         android:textColor="@color/black"
         android:textSize="17sp"/>
 
@@ -39,14 +38,14 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="65dp"
         android:layout_marginTop="16dp"
-        android:text="Full name"/>
+        android:text="Adress"/>
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="62dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:text="Le Truong Sanh"
-        android:layout_marginLeft="65dp"
+        android:layout_marginLeft="62dp"
         android:textColor="@color/black"
         android:textSize="17sp"/>
 
@@ -55,14 +54,14 @@
         android:layout_marginTop="16dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="65dp"
-        android:text="Full name"/>
+        android:text="Phone"/>
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:text="Le Truong Sanh"
-        android:layout_marginLeft="65dp"
+        android:inputType="number"
+        android:layout_marginHorizontal="62dp"
         android:textColor="@color/black"
         android:textSize="17sp"/>
 

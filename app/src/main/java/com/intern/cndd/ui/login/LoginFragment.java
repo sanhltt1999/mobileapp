@@ -22,6 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.intern.cndd.R;
 import com.intern.cndd.model.Users;
+import com.intern.cndd.prevalent.Prevalent;
 import com.intern.cndd.ui.home.HomeActivity;
 
 public class LoginFragment extends Fragment {
@@ -99,6 +100,7 @@ public class LoginFragment extends Fragment {
 
                     if (user.getPhone().equals(phone)) {
                         if (user.getPassword().equals(pass)) {
+                            Prevalent.currentOnlineUser = user;
                             Intent intent = new Intent(getActivity(), HomeActivity.class);
                             startActivity(intent);
                         } else {
