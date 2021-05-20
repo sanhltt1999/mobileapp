@@ -7,6 +7,7 @@
     tools:context=".ui.login.SignUpFragment">
 
     <EditText
+        android:id="@+id/nameEditText"
         android:layout_marginTop="48dp"
         android:drawableLeft="@drawable/ic_baseline_person_24"
         android:hint="@string/username"
@@ -17,6 +18,7 @@
         android:layout_height="wrap_content"/>
 
     <EditText
+        android:id="@+id/passEditText"
         android:layout_marginTop="8dp"
         android:textSize="14sp"
         android:drawablePadding="16dp"
@@ -27,6 +29,7 @@
         android:layout_height="wrap_content"/>
 
     <EditText
+        android:id="@+id/confirmEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="8dp"
@@ -38,7 +41,7 @@
 
 
     <Button
-        android:id="@+id/loginButton"
+        android:id="@+id/signUpButton"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="48dp"

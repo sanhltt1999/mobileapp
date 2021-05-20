@@ -5,14 +5,16 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.intern.cndd.R;
 import com.intern.cndd.ui.login.LoginFragment;
 import com.intern.cndd.ui.login.SignUpFragment;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, SignUpFragment.callAnotherFragment {
 
     ColorStateList def;
     TextView mLoginTextView;
@@ -56,5 +58,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             mSelectTextView.animate().x(size).setDuration(100);
             getSupportFragmentManager().beginTransaction().replace(R.id.contentMain, new SignUpFragment()).commit();
         }
+    }
+
+    @Override
+    public void callBack() {
+        mSelectTextView.animate().x(0).setDuration(100);
+        mLoginTextView.setTextColor(Color.WHITE);
+        mSignUpTextView.setTextColor(def);
+        getSupportFragmentManager().beginTransaction().replace(R.id.contentMain, new LoginFragment()).commit();
     }
 }

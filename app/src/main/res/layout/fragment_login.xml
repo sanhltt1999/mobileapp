@@ -7,18 +7,22 @@
     tools:context=".ui.login.LoginFragment">
 
     <EditText
+        android:id="@+id/phoneEditText"
         android:layout_marginTop="48dp"
         android:drawableLeft="@drawable/ic_baseline_person_24"
         android:hint="@string/username"
         android:layout_marginHorizontal="8dp"
         android:textSize="14sp"
+        android:inputType="number"
         android:layout_width="match_parent"
         android:drawablePadding="16dp"
         android:layout_height="wrap_content"
         android:drawableStart="@drawable/ic_baseline_person_24"/>
 
     <EditText
+        android:id="@+id/passEditText"
         android:layout_marginTop="8dp"
+        android:inputType="numberPassword"
         android:drawablePadding="16dp"
         android:hint="@string/pass"
         android:textSize="14sp"
