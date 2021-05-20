@@ -8,7 +8,7 @@
     tools:context=".ui.profile.ProfileActivity">
 
     <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/productImageView"
+        android:id="@+id/avatarImageView"
         android:layout_width="200dp"
         android:layout_alignParentEnd="true"
         android:layout_gravity="center_horizontal"
@@ -26,6 +26,7 @@
         android:text="Full name"/>
 
     <EditText
+        android:id="@+id/nameEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -41,6 +42,7 @@
         android:text="Adress"/>
 
     <EditText
+        android:id="@+id/addressEditText"
         android:layout_width="match_parent"
         android:layout_marginHorizontal="62dp"
         android:layout_height="wrap_content"
@@ -57,6 +59,7 @@
         android:text="Phone"/>
 
     <EditText
+        android:id="@+id/phoneEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -66,6 +69,7 @@
         android:textSize="17sp"/>
 
     <Button
+        android:id="@+id/updateButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
