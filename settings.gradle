@@ -1,0 +1,2 @@
+rootProject.name = "cndd"
+include ':app'
