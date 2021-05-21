@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "418038172312",
+    "project_id": "cndd-4b178",
+    "storage_bucket": "cndd-4b178.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:418038172312:android:3cb8877708a3370d605eed",
+        "android_client_info": {
+          "package_name": "com.intern.cndd"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "418038172312-51mm7hpv3opec5t8q4rulahu5pvn9pup.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdHJIvQi55qqaLj65jYkcpL0eWn0t4o58"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "418038172312-51mm7hpv3opec5t8q4rulahu5pvn9pup.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
