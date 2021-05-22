@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.login.LoginFragment">
+
+    <EditText
+        android:id="@+id/phoneEditText"
+        android:layout_marginTop="48dp"
+        android:drawableLeft="@drawable/ic_baseline_person_24"
+        android:hint="@string/username"
+        android:layout_marginHorizontal="8dp"
+        android:textSize="14sp"
+        android:inputType="number"
+        android:layout_width="match_parent"
+        android:drawablePadding="16dp"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_baseline_person_24"/>
+
+    <EditText
+        android:id="@+id/passEditText"
+        android:layout_marginTop="8dp"
+        android:inputType="numberPassword"
+        android:drawablePadding="16dp"
+        android:hint="@string/pass"
+        android:textSize="14sp"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="8dp"
+        android:drawableLeft="@drawable/ic_baseline_lock_24"
+        android:layout_height="wrap_content"/>
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/rememberCheckBox"
+        android:layout_marginTop="16dp"
+        style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remember me"
+        android:layout_marginLeft="8dp"
+        android:textColor="@color/black" />
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="48dp"
+        android:text="Login"
+        android:layout_marginHorizontal="8dp"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:background="@drawable/buttons"
+        android:padding="12dp"
+        android:textSize="17sp" />
+
+</LinearLayout>
