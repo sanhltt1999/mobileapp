@@ -10,6 +10,7 @@ import android.widget.ImageView;
 
 import com.intern.cndd.R;
 import com.intern.cndd.prevalent.Prevalent;
+import com.intern.cndd.showorder.ShowOrderActivity;
 import com.intern.cndd.ui.adminproduct.AdminProductActivity;
 
 public class AdminHomeActivity extends AppCompatActivity {
@@ -62,7 +63,8 @@ public class AdminHomeActivity extends AppCompatActivity {
         mCheckButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(AdminHomeActivity.this, ShowOrderActivity.class);
+                startActivity(intent);
             }
         });
 
