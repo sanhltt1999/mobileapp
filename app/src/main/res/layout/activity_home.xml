@@ -12,7 +12,7 @@
         android:layout_height="150dp"/>
 
     <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/avatarImageView"
+        android:id="@+id/avatarHomeImageView"
         android:layout_width="60dp"
         android:layout_alignParentEnd="true"
         android:layout_height="60dp"

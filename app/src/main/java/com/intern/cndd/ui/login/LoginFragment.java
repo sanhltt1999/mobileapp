@@ -64,6 +64,7 @@ public class LoginFragment extends Fragment {
 
         Paper.init(getActivity());
 
+        String id = Paper.book().read("id");
         String userPhone = Paper.book().read(Prevalent.UserPhoneKey);
         String userPass = Paper.book().read(Prevalent.UserPasswordKey);
         String userName = Paper.book().read(Prevalent.UserNameKey);
@@ -73,7 +74,7 @@ public class LoginFragment extends Fragment {
         if (userPhone != "" && userPass != "") {
             if (!TextUtils.isEmpty(userPhone) && !TextUtils.isEmpty(userPass)) {
 
-                Prevalent.currentOnlineUser = new Users(userPhone, userPass, userName, userAddress, userPicture);
+                Prevalent.currentOnlineUser = new Users(id, userPhone, userPass, userName, userAddress, userPicture);
 
                 Intent intent = new Intent(getActivity(), HomeActivity.class);
                 startActivity(intent);
@@ -130,7 +131,7 @@ public class LoginFragment extends Fragment {
                             Intent intent = new Intent(getActivity(), HomeActivity.class);
                             startActivity(intent);
 
-                            AllowAccessToAcount(user.getPhone(), user.getPassword(), user.getName(), user.getPicture(), user.getAddress());
+                            AllowAccessToAcount(user.getPhone(), user.getPassword(), user.getName(), user.getImage(), user.getAddress());
 
                         } else {
                             loadingBar.dismiss();
@@ -155,6 +156,7 @@ public class LoginFragment extends Fragment {
     public void AllowAccessToAcount(String phone, String password, String name, String picture, String address) {
 
         if (mRememberCheckBox.isChecked()) {
+            Paper.book().write("id", phone);
             Paper.book().write(Prevalent.UserPhoneKey, phone);
             Paper.book().write(Prevalent.UserPasswordKey, password);
             Paper.book().write(Prevalent.UserNameKey, name);

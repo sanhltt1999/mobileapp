@@ -2,26 +2,20 @@ package com.intern.cndd.ui.home;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.imageview.ShapeableImageView;
@@ -36,7 +30,6 @@ import com.intern.cndd.prevalent.Prevalent;
 import com.intern.cndd.ui.cart.CartActivity;
 import com.intern.cndd.ui.detail.DetailActivity;
 import com.intern.cndd.ui.profile.ProfileActivity;
-import com.intern.cndd.viewholder.ProductsViewHolder;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -72,7 +65,7 @@ public class HomeActivity extends AppCompatActivity {
 
         ProductRef = FirebaseDatabase.getInstance().getReference().child("Products");
 
-        mAvatarImageView = findViewById(R.id.avatarImageView);
+        mAvatarImageView = findViewById(R.id.avatarHomeImageView);
         mTitleTextView = findViewById(R.id.titleTextView);
 
         mHomeImageView = findViewById(R.id.homeImageView);
@@ -89,8 +82,10 @@ public class HomeActivity extends AppCompatActivity {
         mProductsRecyclerView.setAdapter(mProductsAdapter);
 
         mTitleTextView.setText("Hi, " + Prevalent.currentOnlineUser.getName() + "!");
+
         Glide.with(this)
-                .load(Prevalent.currentOnlineUser.getPicture())
+                .load(Prevalent.currentOnlineUser.getImage())
+                .override(60, 60)
                 .centerCrop()
                 .into(mAvatarImageView);
 

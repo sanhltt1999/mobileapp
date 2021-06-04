@@ -108,11 +108,12 @@ public class SignUpFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (!(snapshot.child("Users").child(phone).exists())) {
                     HashMap<String, Object> user = new HashMap<>();
+                    user.put("id", phone);
                     user.put("phone", phone);
                     user.put("password", pass);
                     user.put("name", "");
                     user.put("address", "");
-                    user.put("picture", "");
+                    user.put("image", "");
 
                     rootRef.child("Users").child(phone).updateChildren(user)
                             .addOnCompleteListener(new OnCompleteListener<Void>() {

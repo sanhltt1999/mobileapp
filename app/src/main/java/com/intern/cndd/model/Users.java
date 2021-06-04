@@ -2,20 +2,30 @@ package com.intern.cndd.model;
 
 public class Users {
 
+    private String id;
     private String phone;
     private String password;
     private String name;
     private String address;
-    private String picture;
+    private String image;
 
     public Users() {}
 
-    public Users(String phone, String password, String name, String address, String picture) {
+    public Users(String id, String phone, String password, String name, String address, String picture) {
+        this.id = id;
         this.phone = phone;
         this.password = password;
         this.name = name;
         this.address = address;
-        this.picture = picture;
+        this.image = picture;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getPhone() {
@@ -50,11 +60,11 @@ public class Users {
         this.address = address;
     }
 
-    public String getPicture() {
-        return picture;
+    public String getImage() {
+        return image;
     }
 
-    public void setPicture(String picture) {
-        this.picture = picture;
+    public void setImage(String image) {
+        this.image = image;
     }
 }
