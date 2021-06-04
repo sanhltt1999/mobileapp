@@ -21,6 +21,10 @@ import com.google.firebase.database.ValueEventListener;
 import com.intern.cndd.R;
 import com.intern.cndd.model.Orders;
 import com.intern.cndd.model.Products;
+<<<<<<< HEAD
+=======
+import com.intern.cndd.ui.detailorder.DetailOrderActivity;
+>>>>>>> 2f76b5688ded0286a8f86d81b2b8c7f9de917be5
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -81,7 +85,11 @@ public class ShowOrderActivity extends AppCompatActivity {
 
             @Override
             public void onShow(Orders products, int position) {
+<<<<<<< HEAD
                 Intent intent = new Intent(ShowOrderActivity.this, ShowOrderActivity.class);
+=======
+                Intent intent = new Intent(ShowOrderActivity.this, DetailOrderActivity.class);
+>>>>>>> 2f76b5688ded0286a8f86d81b2b8c7f9de917be5
                 intent.putExtra("uid", products.getId());
                 startActivity(intent);
             }
@@ -97,7 +105,13 @@ public class ShowOrderActivity extends AppCompatActivity {
                 mOrders.clear();
                 for (DataSnapshot postSnapshot: snapshot.getChildren()) {
                     Orders orders = postSnapshot.getValue(Orders.class);
+<<<<<<< HEAD
                     mOrders.add(orders);
+=======
+                    if (!orders.getState().equals("Shipped")){
+                        mOrders.add(orders);
+                    }
+>>>>>>> 2f76b5688ded0286a8f86d81b2b8c7f9de917be5
                 }
                 mOrderAdapter.setOrdersList(mOrders);
                 mOrderAdapter.notifyDataSetChanged();
