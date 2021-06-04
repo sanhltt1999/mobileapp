@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_alignParentEnd="true"
         android:layout_height="300dp"
-        android:background="@drawable/pierreperson"
+        android:background="@drawable/ic_baseline_person_24"
         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.SelectedCornerRadius2"
         tools:ignore="ObsoleteLayoutParam"
         android:layout_margin="32dp"
@@ -55,6 +55,7 @@
             android:layout_gravity="center"/>
 
         <TextView
+            android:id="@+id/totalStarTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="(123 danh gia)"
@@ -75,7 +76,7 @@
         android:id="@+id/totalCostTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="$145"
+        android:text="$0"
         android:textSize="32sp"
         android:textColor="@color/black"
         android:layout_below="@id/line"
@@ -101,7 +102,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="5"
+            android:text="0"
             android:textSize="24sp"
             android:layout_gravity="center_vertical"
             android:textColor="@color/black"
@@ -124,6 +125,7 @@
         android:layout_margin="32dp">
 
         <Button
+            android:id="@+id/addButton"
             android:layout_marginHorizontal="4dp"
             android:background="@drawable/gradient_bg_noselect"
             android:layout_width="0dp"
@@ -134,6 +136,7 @@
             android:layout_weight="1"/>
 
         <Button
+            android:id="@+id/buyButton"
             android:background="@drawable/gradient_bg_select"
             android:layout_width="0dp"
             android:text="Mua hàng"

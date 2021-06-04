@@ -8,10 +8,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -25,11 +27,14 @@ import com.intern.cndd.model.Users;
 import com.intern.cndd.prevalent.Prevalent;
 import com.intern.cndd.ui.home.HomeActivity;
 
+import io.paperdb.Paper;
+
 public class LoginFragment extends Fragment {
 
     private EditText mPhoneEditText;
     private EditText mPassEditText;
     private Button mLoginButton;
+    private CheckBox mRememberCheckBox;
     private ProgressDialog loadingBar;
 
 
@@ -55,6 +60,26 @@ public class LoginFragment extends Fragment {
         mPhoneEditText = view.findViewById(R.id.phoneEditText);
         mPassEditText = view.findViewById(R.id.passEditText);
         mLoginButton = view.findViewById(R.id.loginButton);
+        mRememberCheckBox = view.findViewById(R.id.rememberCheckBox);
+
+        Paper.init(getActivity());
+
+        String userPhone = Paper.book().read(Prevalent.UserPhoneKey);
+        String userPass = Paper.book().read(Prevalent.UserPasswordKey);
+        String userName = Paper.book().read(Prevalent.UserNameKey);
+        String userAddress = Paper.book().read(Prevalent.UserAddressKey);
+        String userPicture = Paper.book().read(Prevalent.UserPictureKey);
+
+        if (userPhone != "" && userPass != "") {
+            if (!TextUtils.isEmpty(userPhone) && !TextUtils.isEmpty(userPass)) {
+
+                Prevalent.currentOnlineUser = new Users(userPhone, userPass, userName, userAddress, userPicture);
+
+                Intent intent = new Intent(getActivity(), HomeActivity.class);
+                startActivity(intent);
+            }
+        }
+
         loadingBar = new ProgressDialog(getActivity());
 
         mLoginButton.setOnClickListener(new View.OnClickListener() {
@@ -83,6 +108,7 @@ public class LoginFragment extends Fragment {
 
             checkLogin(phone, pass);
 
+
         }
 
     }
@@ -103,6 +129,9 @@ public class LoginFragment extends Fragment {
                             Prevalent.currentOnlineUser = user;
                             Intent intent = new Intent(getActivity(), HomeActivity.class);
                             startActivity(intent);
+
+                            AllowAccessToAcount(user.getPhone(), user.getPassword(), user.getName(), user.getPicture(), user.getAddress());
+
                         } else {
                             loadingBar.dismiss();
                             Toast.makeText(getActivity(), "Password is incorrect", Toast.LENGTH_SHORT).show();
@@ -122,4 +151,18 @@ public class LoginFragment extends Fragment {
         });
 
     }
+
+    public void AllowAccessToAcount(String phone, String password, String name, String picture, String address) {
+
+        if (mRememberCheckBox.isChecked()) {
+            Paper.book().write(Prevalent.UserPhoneKey, phone);
+            Paper.book().write(Prevalent.UserPasswordKey, password);
+            Paper.book().write(Prevalent.UserNameKey, name);
+            Paper.book().write(Prevalent.UserPictureKey, picture);
+            Paper.book().write(Prevalent.UserAddressKey, address);
+
+        }
+
+    }
+
 }
