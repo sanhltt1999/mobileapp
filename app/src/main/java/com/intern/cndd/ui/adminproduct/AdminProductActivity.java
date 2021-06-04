@@ -34,44 +34,44 @@ import java.util.HashMap;
 
 public class AdminProductActivity extends AppCompatActivity {
 
-    private String CategoryName, Description, Price, Pname, saveCurrentDate, saveCurrentTime;
-    private Button AddNewProductButton;
-    private ImageView InputProductImage;
-    private EditText InputProductName;
-    private EditText InputProductDescription;
-    private EditText InputProductPrice;
+    private String mCategoryName, mDescription, mPrice, mName, saveCurrentDate, saveCurrentTime;
+    private Button mAddNewProductButton;
+    private ImageView mInputProductImage;
+    private EditText mInputProductName;
+    private EditText mInputProductDescription;
+    private EditText mInputProductPrice;
     private ProgressDialog loadingBar;
 
     private static final int GalleryPick = 1;
-    private Uri ImageUri;
+    private Uri mImageUri;
     private String productRandomKey, downloadImageUrl;
-    private StorageReference ProductImageRef;
-    private DatabaseReference ProductRef;
+    private StorageReference mProductImageRef;
+    private DatabaseReference mProductRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_product);
 
-        CategoryName = getIntent().getExtras().get(AdminHomeActivity.CATEGORY_KEY).toString();
-        ProductImageRef = FirebaseStorage.getInstance().getReference().child("Product Image");
-        ProductRef = FirebaseDatabase.getInstance().getReference().child("Products");
+        mCategoryName = getIntent().getExtras().get(AdminHomeActivity.CATEGORY_KEY).toString();
+        mProductImageRef = FirebaseStorage.getInstance().getReference().child("Product Image");
+        mProductRef = FirebaseDatabase.getInstance().getReference().child("Products");
 
-        AddNewProductButton = findViewById(R.id.add_new_product);
-        InputProductName = findViewById(R.id.product_name);
-        InputProductImage = findViewById(R.id.select_product_image);
-        InputProductDescription = findViewById(R.id.product_description);
-        InputProductPrice = findViewById(R.id.product_price);
+        mAddNewProductButton = findViewById(R.id.add_new_product);
+        mInputProductName = findViewById(R.id.product_name);
+        mInputProductImage = findViewById(R.id.select_product_image);
+        mInputProductDescription = findViewById(R.id.product_description);
+        mInputProductPrice = findViewById(R.id.product_price);
         loadingBar = new ProgressDialog(this);
 
-        InputProductImage.setOnClickListener(new View.OnClickListener() {
+        mInputProductImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 OpenGallery();
             }
         });
 
-        AddNewProductButton.setOnClickListener(new View.OnClickListener() {
+        mAddNewProductButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ValidateProductData();
@@ -82,17 +82,17 @@ public class AdminProductActivity extends AppCompatActivity {
     }
 
     private void ValidateProductData() {
-        Description = InputProductDescription.getText().toString();
-        Price = InputProductPrice.getText().toString();
-        Pname = InputProductName.getText().toString();
+        mDescription = mInputProductDescription.getText().toString();
+        mPrice = mInputProductPrice.getText().toString();
+        mName = mInputProductName.getText().toString();
 
-        if (ImageUri == null) {
+        if (mImageUri == null) {
             Toast.makeText(this, "Product image is mandatory...", Toast.LENGTH_SHORT).show();
-        } else if (TextUtils.isEmpty(Description)) {
+        } else if (TextUtils.isEmpty(mDescription)) {
             Toast.makeText(this, "Please write product description", Toast.LENGTH_SHORT).show();
-        } else if (TextUtils.isEmpty(Price)) {
+        } else if (TextUtils.isEmpty(mPrice)) {
             Toast.makeText(this, "Please write product price", Toast.LENGTH_SHORT).show();
-        } else if (TextUtils.isEmpty(Pname)) {
+        } else if (TextUtils.isEmpty(mName)) {
             Toast.makeText(this, "Please write product name", Toast.LENGTH_SHORT).show();
         } else {
             StoreProductInformation();
@@ -117,9 +117,9 @@ public class AdminProductActivity extends AppCompatActivity {
         productRandomKey = saveCurrentDate + saveCurrentTime;
 
 
-        final StorageReference filePath = ProductImageRef.child(ImageUri.getLastPathSegment() + productRandomKey + ".jpg");
+        final StorageReference filePath = mProductImageRef.child(mImageUri.getLastPathSegment() + productRandomKey + ".jpg");
 
-        final UploadTask uploadTask = filePath.putFile(ImageUri);
+        final UploadTask uploadTask = filePath.putFile(mImageUri);
 
 
         uploadTask.addOnFailureListener(new OnFailureListener() {
@@ -166,16 +166,16 @@ public class AdminProductActivity extends AppCompatActivity {
         productMap.put("id", productRandomKey);
         productMap.put("date", saveCurrentDate);
         productMap.put("time", saveCurrentTime);
-        productMap.put("description", Description);
-        productMap.put("category", CategoryName);
-        productMap.put("price", Price);
-        productMap.put("name", Pname);
+        productMap.put("description", mDescription);
+        productMap.put("category", mCategoryName);
+        productMap.put("price", mPrice);
+        productMap.put("name", mName);
         productMap.put("image", downloadImageUrl);
         productMap.put("total", "1");
         productMap.put("start", "5");
 
 
-        ProductRef.child(productRandomKey).updateChildren(productMap)
+        mProductRef.child(productRandomKey).updateChildren(productMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -206,8 +206,8 @@ public class AdminProductActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == GalleryPick && resultCode == RESULT_OK && data != null) {
-            ImageUri = data.getData();
-            InputProductImage.setImageURI(ImageUri);
+            mImageUri = data.getData();
+            mInputProductImage.setImageURI(mImageUri);
         }
     }
 
