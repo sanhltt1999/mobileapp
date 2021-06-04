@@ -1,6 +1,8 @@
 package com.intern.cndd.model;
 
-public class Orders {
+import java.io.Serializable;
+
+public class Orders implements Serializable {
 
     private String id;
     private String name;

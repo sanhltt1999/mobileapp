@@ -1,10 +1,12 @@
 package com.intern.cndd.ui.cart;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -38,6 +41,8 @@ public class CartActivity extends AppCompatActivity {
     private CartAdapter mCartAdapter;
     private DatabaseReference ProductRef;
     private Button mBuyButton;
+    private AlertDialog mAlertDialog;
+    private AlertDialog.Builder mBuilder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +61,23 @@ public class CartActivity extends AppCompatActivity {
         mCartAdapter = new CartAdapter(this, mProductsList);
         mProductsRecyclerView.setAdapter(mCartAdapter);
 
+        mBuilder = new AlertDialog.Builder(this);
+        mBuilder.setTitle(getResources().getString(R.string.buy))
+                .setMessage(R.string.confirm_buy)
+                .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                        buyProduct();
+                    }
+                })
+                .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+        mAlertDialog = mBuilder.create();
         loadProduct();
 
         mCartAdapter.setOnListener(new CartAdapter.OnListener() {
@@ -70,12 +92,7 @@ public class CartActivity extends AppCompatActivity {
             }
         });
 
-        mBuyButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                buyProduct();
-            }
-        });
+        mBuyButton.setOnClickListener(v -> mAlertDialog.show());
 
     }
 
@@ -147,6 +164,7 @@ public class CartActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 Toast.makeText(CartActivity.this, "Add order successfully", Toast.LENGTH_SHORT).show();
+                                finish();
                             }
                         });
                     }

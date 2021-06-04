@@ -125,7 +125,7 @@ public class LoginFragment extends Fragment {
                 if (snapshot.child("Users").child(phone).exists()) {
                     Users user = snapshot.child("Users").child(phone).getValue(Users.class);
 
-                    if (user.getPhone().equals(phone)) {
+                    if (user.getId().equals(phone)) {
                         if (user.getPassword().equals(pass)) {
                             Prevalent.currentOnlineUser = user;
                             Intent intent = new Intent(getActivity(), HomeActivity.class);

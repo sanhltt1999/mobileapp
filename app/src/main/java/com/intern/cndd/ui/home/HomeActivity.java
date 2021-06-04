@@ -30,6 +30,7 @@ import com.intern.cndd.prevalent.Prevalent;
 import com.intern.cndd.ui.cart.CartActivity;
 import com.intern.cndd.ui.detail.DetailActivity;
 import com.intern.cndd.ui.profile.ProfileActivity;
+import com.intern.cndd.ui.shipping.ShippingActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -126,6 +127,13 @@ public class HomeActivity extends AppCompatActivity {
         mProfileImageView.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this, ProfileActivity.class);
             startActivity(intent);
+        });
+
+        mShipImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, ShippingActivity.class));
+            }
         });
 
         mCartImageView.setOnClickListener(v -> {

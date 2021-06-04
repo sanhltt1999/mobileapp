@@ -128,7 +128,7 @@ public class DetailActivity extends AppCompatActivity {
         cartMap.put("category", mProducts.getCategory());
         cartMap.put("description", mProducts.getDescription());
 
-        cartListRef.child("User View").child(Prevalent.currentOnlineUser.getPhone()).child("Products").child(mProducts.getId())
+        cartListRef.child("User View").child(Prevalent.currentOnlineUser.getId()).child("Products").child(mProducts.getId())
                 .updateChildren(cartMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

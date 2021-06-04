@@ -8,6 +8,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,7 +27,9 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.intern.cndd.R;
+import com.intern.cndd.model.Orders;
 import com.intern.cndd.prevalent.Prevalent;
+import com.intern.cndd.ui.shipping.ShippingActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -46,6 +49,7 @@ public class ProfileActivity extends AppCompatActivity {
     private StorageReference ProductImageRef;
     private DatabaseReference ProductRef;
     private Uri ImageUri;
+    private Orders mOrders = null;
 
 
     @Override
@@ -93,11 +97,19 @@ public class ProfileActivity extends AppCompatActivity {
                     Toast.makeText(ProfileActivity.this, "Please enter your information!", Toast.LENGTH_SHORT).show();
                 } else {
 
+                    try {
+                        mOrders = (Orders) getIntent().getExtras().getSerializable(ShippingActivity.SHIP_KEY);
+                        updateOrder();
+                    } catch (Exception e) {
+                        Log.d("Bug", e.toString());
+                    }
+
+
                     if (ImageUri == null) {
-                        ImageUri = Uri.parse(Prevalent.currentOnlineUser.getImage());
-                        SaveProductInfoToDatabase();
+                        downloadImageUrl = Prevalent.currentOnlineUser.getImage();
+                        SaveInfoToDatabase();
                     } else {
-                        StoreProductInformation();
+                        StoreInformation();
                     }
 
                 }
@@ -123,7 +135,7 @@ public class ProfileActivity extends AppCompatActivity {
         }
     }
 
-    private void StoreProductInformation() {
+    private void StoreInformation() {
         loadingBar.setTitle("Update");
         loadingBar.setMessage("Please wait!");
         loadingBar.setCanceledOnTouchOutside(false);
@@ -175,7 +187,7 @@ public class ProfileActivity extends AppCompatActivity {
 
                             Toast.makeText(ProfileActivity.this, "got the Profile image Url Successfully...", Toast.LENGTH_SHORT).show();
 
-                            SaveProductInfoToDatabase();
+                            SaveInfoToDatabase();
                         }
                     }
                 });
@@ -183,7 +195,27 @@ public class ProfileActivity extends AppCompatActivity {
         });
     }
 
-    private void SaveProductInfoToDatabase() {
+    private void updateOrder() {
+
+        HashMap<String, Object> order = new HashMap<>();
+
+        order.put("name", mNameEditText.getText().toString().trim());
+        order.put("phone", mPhoneEditText.getText().toString().trim());
+        order.put("address", mAddressEditText.getText().toString().trim());
+
+        final DatabaseReference shipRef =  FirebaseDatabase.getInstance().getReference().child("Orders")
+                .child(Prevalent.currentOnlineUser.getId());
+
+        shipRef.updateChildren(order).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                Toast.makeText(ProfileActivity.this, "Complete", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+    private void SaveInfoToDatabase() {
         HashMap<String, Object> user = new HashMap<>();
         user.put("id", Prevalent.currentOnlineUser.getId());
         user.put("phone", mPhoneEditText.getText().toString().trim());
@@ -202,7 +234,7 @@ public class ProfileActivity extends AppCompatActivity {
                             Prevalent.currentOnlineUser.setPhone(mPhoneEditText.getText().toString().trim());
                             Prevalent.currentOnlineUser.setName(mNameEditText.getText().toString().trim());
                             Prevalent.currentOnlineUser.setAddress(mAddressEditText.getText().toString().trim());
-                            Prevalent.currentOnlineUser.setImage(ImageUri.toString());
+                            Prevalent.currentOnlineUser.setImage(downloadImageUrl);
 
                         } else {
                             loadingBar.dismiss();
