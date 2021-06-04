@@ -9,9 +9,12 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -53,6 +56,7 @@ public class HomeActivity extends AppCompatActivity {
     private ImageView mProfileImageView;
     private ImageView mItemDecorationImageView;
     private ImageView mItemDesignImageView;
+    private EditText mSearchEditText;
     private RecyclerView mProductsRecyclerView;
     private ProductsAdapter mProductsAdapter;
     private List<Products> mProducts = new ArrayList<>();
@@ -78,6 +82,7 @@ public class HomeActivity extends AppCompatActivity {
         mProductsRecyclerView = findViewById(R.id.productsRecyclerView);
         mItemDesignImageView = findViewById(R.id.itemDesignImageView);
         mItemDecorationImageView = findViewById(R.id.itemDecorationImageView);
+        mSearchEditText = findViewById(R.id.searchEditText);
 
         mProductsRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL    ));
         mProductsAdapter = new ProductsAdapter(this, mProducts);
@@ -133,6 +138,23 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        mSearchEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                filter(String.valueOf(s));
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
     }
 
     public void loadProduct(String type) {
@@ -146,7 +168,7 @@ public class HomeActivity extends AppCompatActivity {
                         mProducts.add(product);
                     }
                 }
-
+                mProductsAdapter.setProducts(mProducts);
                 mProductsAdapter.notifyDataSetChanged();
 
             }
@@ -201,6 +223,21 @@ public class HomeActivity extends AppCompatActivity {
                     }
                 });
 
+    }
+
+    private void filter(String newText) {
+        List<Products> products = new ArrayList<>();
+
+        for (Products item : mProducts) {
+            if (item.getName().toLowerCase().contains(newText.toLowerCase())) {
+                products.add(item);
+            }
+        }
+
+        if (products.isEmpty()) {
+        } else {
+            mProductsAdapter.filterList(products);
+        }
     }
 
 }

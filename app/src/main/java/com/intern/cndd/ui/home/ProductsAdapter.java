@@ -32,6 +32,10 @@ public class ProductsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         mProducts = products;
     }
 
+    public void setProducts(List<Products> products) {
+        mProducts = products;
+    }
+
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -49,6 +53,10 @@ public class ProductsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         return mProducts.size();
     }
 
+    public void filterList(List<Products> filterllist) {
+        mProducts = filterllist;
+        notifyDataSetChanged();
+    }
 
     public class ProductsViewHolder extends RecyclerView.ViewHolder {
 
