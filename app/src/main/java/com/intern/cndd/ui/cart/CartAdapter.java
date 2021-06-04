@@ -15,8 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.intern.cndd.R;
 import com.intern.cndd.model.Products;
-import com.intern.cndd.prevalent.Prevalent;
-import com.intern.cndd.ui.home.ProductsAdapter;
 
 import java.util.List;
 
@@ -25,11 +23,20 @@ public class CartAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private Context mContext;
     private List<Products> mProducts;
     private OnListener mOnListener;
+    private boolean checked = false;
 
     private int count = 0;
 
     public void setProducts(List<Products> products) {
         mProducts = products;
+    }
+
+    public boolean isChecked() {
+        return checked;
+    }
+
+    public void setChecked(boolean checked) {
+        this.checked = checked;
     }
 
     public int getCount() {
@@ -99,7 +106,6 @@ public class CartAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     .centerCrop()
                     .into(mProductImageView);
 
-            selectCheckBox.setSelected(true);
             mNameProductTextView.setText(products.getName());
             mCostTextView.setText("$" + price*total);
             mTotalTextView.setText(total + "");
@@ -125,11 +131,14 @@ public class CartAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             mSubImageView.setOnClickListener(v -> {
                 int price1 = Integer.parseInt(products.getPrice());
                 int total1 = Integer.parseInt(products.getTotal());
-                mCostTextView.setText(price1 *(total1 - 1) + "");
-                mTotalTextView.setText((total1 - 1) + "");
-                mProducts.get(position).setTotal((total1 - 1) + "");
-                count = 0;
-                notifyDataSetChanged();
+                if (total1 > 0) {
+                    mCostTextView.setText(price1 *(total1 - 1) + "");
+                    mTotalTextView.setText((total1 - 1) + "");
+                    mProducts.get(position).setTotal((total1 - 1) + "");
+                    count = 0;
+                    notifyDataSetChanged();
+                }
+
             });
 
             selectCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
