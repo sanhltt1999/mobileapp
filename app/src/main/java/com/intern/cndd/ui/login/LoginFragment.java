@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -25,6 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.intern.cndd.R;
 import com.intern.cndd.model.Users;
 import com.intern.cndd.prevalent.Prevalent;
+import com.intern.cndd.ui.adminhome.AdminHomeActivity;
 import com.intern.cndd.ui.home.HomeActivity;
 
 import io.paperdb.Paper;
@@ -33,9 +35,11 @@ public class LoginFragment extends Fragment {
 
     private EditText mPhoneEditText;
     private EditText mPassEditText;
+    private TextView mAdminTextView;
     private Button mLoginButton;
     private CheckBox mRememberCheckBox;
     private ProgressDialog loadingBar;
+    private String state = "User";
 
 
     public static LoginFragment newInstance() {
@@ -61,6 +65,7 @@ public class LoginFragment extends Fragment {
         mPassEditText = view.findViewById(R.id.passEditText);
         mLoginButton = view.findViewById(R.id.loginButton);
         mRememberCheckBox = view.findViewById(R.id.rememberCheckBox);
+        mAdminTextView = view.findViewById(R.id.adminTextView);
 
         Paper.init(getActivity());
 
@@ -90,6 +95,22 @@ public class LoginFragment extends Fragment {
             }
         });
 
+        mAdminTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mAdminTextView.getText().toString().equals("I am User")) {
+                    mAdminTextView.setText("I am Admin");
+                    state = "User";
+                    mLoginButton.setText("Login");
+                } else {
+                    mAdminTextView.setText("I am User");
+                    state = "Admin";
+                    mLoginButton.setText("Login With Admin");
+                }
+
+            }
+        });
+
     }
 
     private void loginUser() {
@@ -111,8 +132,8 @@ public class LoginFragment extends Fragment {
 
 
         }
-
     }
+
 
     private void checkLogin(String phone, String pass) {
 
@@ -122,27 +143,61 @@ public class LoginFragment extends Fragment {
         roofRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.child("Users").child(phone).exists()) {
-                    Users user = snapshot.child("Users").child(phone).getValue(Users.class);
 
-                    if (user.getId().equals(phone)) {
-                        if (user.getPassword().equals(pass)) {
-                            Prevalent.currentOnlineUser = user;
-                            Intent intent = new Intent(getActivity(), HomeActivity.class);
-                            startActivity(intent);
+                if (state.equals("User")) {
+                    if (snapshot.child("Users").child(phone).exists()) {
+                        Users user = snapshot.child("Users").child(phone).getValue(Users.class);
 
-                            AllowAccessToAcount(user.getPhone(), user.getPassword(), user.getName(), user.getImage(), user.getAddress());
+                        if (user.getId().equals(phone)) {
+                            if (user.getPassword().equals(pass)) {
+                                Prevalent.currentOnlineUser = user;
+                                Intent intent = new Intent(getActivity(), HomeActivity.class);
+                                startActivity(intent);
+                                loadingBar.dismiss();
+                                AllowAccessToAcount(user.getPhone(), user.getPassword(), user.getName(), user.getImage(), user.getAddress());
 
-                        } else {
+                            } else {
+                                loadingBar.dismiss();
+                                Toast.makeText(getActivity(), "Password is incorrect", Toast.LENGTH_SHORT).show();
+                            }
+                        }  else {
+                            Toast.makeText(getActivity(), "Account with this" + phone + " number do not exits", Toast.LENGTH_SHORT).show();
                             loadingBar.dismiss();
-                            Toast.makeText(getActivity(), "Password is incorrect", Toast.LENGTH_SHORT).show();
                         }
+
+                    } else {
+                        Toast.makeText(getActivity(), "Account with this" + phone + " number do not exits", Toast.LENGTH_SHORT).show();
+                        loadingBar.dismiss();
+                    }
+
+                } else {
+                    if (snapshot.child("Admin").child(phone).exists()) {
+                        Users user = snapshot.child("Admin").child(phone).getValue(Users.class);
+
+                        if (user.getId().equals(phone)) {
+                            if (user.getPassword().equals(pass)) {
+                                Prevalent.currentOnlineUser = user;
+                                Intent intent = new Intent(getActivity(), AdminHomeActivity.class);
+                                startActivity(intent);
+                                loadingBar.dismiss();
+                                AllowAccessToAcount(user.getPhone(), user.getPassword(), user.getName(), user.getImage(), user.getAddress());
+
+                            } else {
+                                loadingBar.dismiss();
+                                Toast.makeText(getActivity(), "Password is incorrect", Toast.LENGTH_SHORT).show();
+                            }
+                        } else {
+                            Toast.makeText(getActivity(), "Account with this" + phone + " number do not exits", Toast.LENGTH_SHORT).show();
+                            loadingBar.dismiss();
+                        }
+
                     } else {
                         Toast.makeText(getActivity(), "Account with this" + phone + " number do not exits", Toast.LENGTH_SHORT).show();
                         loadingBar.dismiss();
                     }
 
                 }
+
             }
 
             @Override

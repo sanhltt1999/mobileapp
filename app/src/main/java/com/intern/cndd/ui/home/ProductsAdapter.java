@@ -76,7 +76,6 @@ public class ProductsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             Glide.with(mContext)
                     .load(products.getImage())
                     .placeholder(R.drawable.loadingimage)
-                    .optionalCenterInside()
                     .into(productImageView);
 
             nameTextView.setText(products.getName());
