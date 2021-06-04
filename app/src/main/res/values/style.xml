@@ -9,10 +9,10 @@
     </style>
 
     <style name="ShapeAppearanceOverlay.App.SelectedCornerRadius2" parent="">
-        <item name="cornerSizeTopLeft">32dp</item>
-        <item name="cornerSizeBottomLeft">32dp</item>
-        <item name="cornerSizeTopRight">32dp</item>
-        <item name="cornerSizeBottomRight">32dp</item>
+        <item name="cornerSizeTopLeft">16dp</item>
+        <item name="cornerSizeBottomLeft">16dp</item>
+        <item name="cornerSizeTopRight">16dp</item>
+        <item name="cornerSizeBottomRight">16dp</item>
     </style>
 
 </resources>

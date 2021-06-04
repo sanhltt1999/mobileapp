@@ -6,7 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".ui.cart.CartActivity">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/productsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/layout"/>
+
     <LinearLayout
+        android:id="@+id/layout"
         android:layout_alignParentBottom="true"
         android:background="@drawable/bg_add_detail"
         android:weightSum="4"
@@ -23,7 +30,6 @@
             android:text="Tất cả"/>
 
         <LinearLayout
-
             android:orientation="vertical"
             android:layout_gravity="center_vertical"
             android:layout_width="0dp"
@@ -38,9 +44,10 @@
                 android:textColor="@color/black"/>
 
             <TextView
+                android:id="@+id/costTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="$2000"
+                android:text="$0"
                 android:textSize="17sp"
                 android:layout_marginTop="4dp"
                 android:textColor="@color/black"/>
