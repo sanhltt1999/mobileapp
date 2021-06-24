@@ -21,11 +21,11 @@
         android:id="@+id/nameProductTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Phong ngu siple"
         android:textSize="21sp"
         android:textColor="@color/black"
         android:layout_below="@id/productImageView"
-        android:layout_marginLeft="42dp"/>
+        android:layout_marginLeft="42dp"
+        android:layout_marginStart="42dp" />
 
     <LinearLayout
         android:id="@+id/ly1"
@@ -41,27 +41,30 @@
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/ic_baseline_star_24"/>
+            android:src="@drawable/ic_baseline_star_24"
+            android:contentDescription="@null" />
 
         <TextView
             android:id="@+id/staffTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="21sp"
-            android:text="4.5"
+            android:text="@string/_4_5"
             android:layout_marginLeft="16dp"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:layout_marginStart="16dp" />
 
         <TextView
             android:id="@+id/totalStarTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="(123 danh gia)"
+            android:text="@string/_123_danh_gia"
             android:layout_gravity="center"
             android:layout_marginTop="4dp"
-            android:layout_marginLeft="8dp"/>
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp" />
 
     </LinearLayout>
 
@@ -76,12 +79,13 @@
         android:id="@+id/totalCostTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="$0"
+        android:text="@string/_0"
         android:textSize="32sp"
         android:textColor="@color/black"
         android:layout_below="@id/line"
         android:layout_marginLeft="42dp"
-        android:layout_marginTop="8dp"/>
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="42dp" />
 
     <LinearLayout
         android:id="@+id/addLayout"
@@ -90,7 +94,8 @@
         android:layout_width="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@id/totalCostTextView"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginStart="42dp">
 
         <ImageView
             android:id="@+id/plusImageView"
@@ -98,13 +103,14 @@
             android:layout_height="42dp"
             android:padding="12dp"
             android:background="@drawable/bg_add_detail"
-            android:src="@drawable/ic_minus_sign"/>
+            android:src="@drawable/ic_minus_sign"
+            android:contentDescription="@null" />
 
         <TextView
             android:id="@+id/countTextView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="0"
+            android:text="@string/_0"
             android:textSize="24sp"
             android:layout_gravity="center_vertical"
             android:textColor="@color/black"
@@ -117,7 +123,8 @@
             android:layout_height="42dp"
             android:padding="12dp"
             android:background="@drawable/bg_add_detail"
-            android:src="@drawable/ic_plus"/>
+            android:src="@drawable/ic_plus"
+            android:contentDescription="@null" />
     </LinearLayout>
 
     <LinearLayout
@@ -132,22 +139,11 @@
             android:layout_marginHorizontal="4dp"
             android:background="@drawable/gradient_bg_noselect"
             android:layout_width="0dp"
-            android:text="Thêm vào giỏ hàng"
+            android:text="@string/th_m_v_o_gi_h_ng"
             android:textColor="@color/white"
             android:textAllCaps="false"
             android:layout_height="wrap_content"
-            android:layout_weight="1"/>
-
-        <Button
-            android:id="@+id/buyButton"
-            android:background="@drawable/gradient_bg_select"
-            android:layout_width="0dp"
-            android:text="Mua hàng"
-            android:layout_marginHorizontal="4dp"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_weight="2"/>
     </LinearLayout>
 
 </RelativeLayout>

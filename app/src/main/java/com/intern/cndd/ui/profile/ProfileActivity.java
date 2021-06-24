@@ -235,7 +235,7 @@ public class ProfileActivity extends AppCompatActivity {
                             Prevalent.currentOnlineUser.setName(mNameEditText.getText().toString().trim());
                             Prevalent.currentOnlineUser.setAddress(mAddressEditText.getText().toString().trim());
                             Prevalent.currentOnlineUser.setImage(downloadImageUrl);
-
+                            finish();
                         } else {
                             loadingBar.dismiss();
                             String message = task.getException().toString();

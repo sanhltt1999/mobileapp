@@ -27,6 +27,20 @@
         android:layout_alignParentRight="true" />
 
     <TextView
+        android:id="@+id/logoutTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="@string/logout"
+        android:textStyle="bold"
+        android:layout_marginTop="36dp"
+        android:textSize="17sp"
+        android:layout_marginRight="32dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/titleTextView"
+        android:layout_alignParentRight="true" />
+
+    <TextView
         android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

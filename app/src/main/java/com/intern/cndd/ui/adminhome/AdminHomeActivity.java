@@ -10,7 +10,7 @@ import android.widget.ImageView;
 
 import com.intern.cndd.R;
 import com.intern.cndd.prevalent.Prevalent;
-import com.intern.cndd.showorder.ShowOrderActivity;
+import com.intern.cndd.ui.showorder.ShowOrderActivity;
 import com.intern.cndd.ui.adminproduct.AdminProductActivity;
 
 public class AdminHomeActivity extends AppCompatActivity {
@@ -19,7 +19,6 @@ public class AdminHomeActivity extends AppCompatActivity {
 
     private ImageView mDesignImageView;
     private ImageView mItemImageView;
-    private Button mMaintainButton;
     private Button mCheckButton;
     private Button mLogout;
 
@@ -30,7 +29,6 @@ public class AdminHomeActivity extends AppCompatActivity {
 
         mDesignImageView = findViewById(R.id.designImageView);
         mItemImageView = findViewById(R.id.itemImageView);
-        mMaintainButton = findViewById(R.id.maintainButton);
         mCheckButton = findViewById(R.id.checkButton);
         mLogout = findViewById(R.id.logoutButton);
 

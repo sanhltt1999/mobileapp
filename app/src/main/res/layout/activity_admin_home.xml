@@ -27,7 +27,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Design"/>
+        android:text="@string/design"/>
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/itemImageView"
@@ -48,29 +48,25 @@
         android:layout_gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Item"/>
+        android:text="@string/item"/>
 
-    <Button
-        android:id="@+id/maintainButton"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/buttons_edit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Maintain Product"/>
+
 
     <Button
         android:id="@+id/checkButton"
         android:background="@drawable/buttons_edit"
         android:layout_width="match_parent"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="48dp"
+        android:textColor="@color/white"
         android:layout_height="wrap_content"
-        android:text="Check new order"/>
+        android:text="@string/check_new_order"/>
 
     <Button
         android:id="@+id/logoutButton"
         android:background="@drawable/buttons_edit"
         android:layout_width="match_parent"
+        android:textColor="@color/white"
         android:layout_marginTop="8dp"
         android:layout_height="wrap_content"
-        android:text="Logout"/>
+        android:text="@string/logout"/>
 </LinearLayout>

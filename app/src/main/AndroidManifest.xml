@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Cndd">
         <activity android:name=".ui.detailorder.DetailOrderActivity"></activity>
-        <activity android:name=".showorder.ShowOrderActivity" />
+        <activity android:name=".ui.showorder.ShowOrderActivity" />
         <activity android:name=".ui.adminproduct.AdminProductActivity" />
         <activity android:name=".ui.adminhome.AdminHomeActivity" />
         <activity android:name=".ui.shipping.ShippingActivity" />

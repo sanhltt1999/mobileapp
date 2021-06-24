@@ -54,6 +54,7 @@ public class HomeActivity extends AppCompatActivity {
     private RecyclerView mProductsRecyclerView;
     private ProductsAdapter mProductsAdapter;
     private List<Products> mProducts = new ArrayList<>();
+    private TextView mLogoutTextView;
 
 
     private DatabaseReference ProductRef;
@@ -77,6 +78,7 @@ public class HomeActivity extends AppCompatActivity {
         mItemDesignImageView = findViewById(R.id.itemDesignImageView);
         mItemDecorationImageView = findViewById(R.id.itemDecorationImageView);
         mSearchEditText = findViewById(R.id.searchEditText);
+        mLogoutTextView = findViewById(R.id.logoutTextView);
 
         mProductsRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL    ));
         mProductsAdapter = new ProductsAdapter(this, mProducts);
@@ -93,7 +95,6 @@ public class HomeActivity extends AppCompatActivity {
         mHomeImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SaveProductInfoToDatabase();
             }
         });
 
@@ -141,6 +142,14 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        mLogoutTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                Prevalent.currentOnlineUser = null;
+            }
+        });
+
         mSearchEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -181,51 +190,6 @@ public class HomeActivity extends AppCompatActivity {
 
             }
         });
-    }
-
-    private void SaveProductInfoToDatabase() {
-
-        String saveCurrentDate, saveCurrentTime, productRandomKey;
-
-        Calendar calendar = Calendar.getInstance();
-
-        SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
-        saveCurrentDate = currentDate.format(calendar.getTime());
-
-        SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
-        saveCurrentTime = currentTime.format(calendar.getTime());
-
-        productRandomKey = saveCurrentDate + saveCurrentTime;
-
-        HashMap<String, Object> productMap = new HashMap<>();
-        productMap.put("id", productRandomKey);
-        productMap.put("date", saveCurrentDate);
-        productMap.put("time", saveCurrentTime);
-        productMap.put("description", "Den cua Sanh v2");
-        productMap.put("category", "item");
-        productMap.put("price", "5");
-        productMap.put("name", "Den v2");
-        productMap.put("image", "https://i.pinimg.com/236x/60/c3/f3/60c3f33fcd50e2695db40db6f1fca974.jpg");
-        productMap.put("total", "10");
-        productMap.put("star", "4.5");
-
-        DatabaseReference ProductRef;
-        ProductRef = FirebaseDatabase.getInstance().getReference().child("Products");
-
-
-        ProductRef.child(productRandomKey).updateChildren(productMap)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(HomeActivity.this, "Product is added successfully...", Toast.LENGTH_SHORT).show();
-                        } else {
-                            String message = task.getException().toString();
-                            Toast.makeText(HomeActivity.this, "Error " + message, Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-
     }
 
     private void filter(String newText) {

@@ -15,7 +15,8 @@
         android:scaleType="centerCrop"
         android:src="@drawable/select_product_image"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="10dp"
+        android:contentDescription="@null" />
 
 
     <EditText
@@ -26,10 +27,11 @@
         android:inputType="textMultiLine"
         android:layout_marginTop="20dp"
         android:padding="20dp"
-        android:hint="Product Name..."
+        android:hint="@string/product_name"
         android:layout_marginLeft="45dp"
         android:layout_marginRight="45dp"
-        android:background="@drawable/input_admin" />
+        android:background="@drawable/input_admin"
+        android:autofillHints="@null" />
 
 
     <EditText
@@ -40,10 +42,11 @@
         android:inputType="textMultiLine"
         android:layout_marginTop="6dp"
         android:padding="20dp"
-        android:hint="Product Description..."
+        android:hint="@string/product_description"
         android:layout_marginLeft="45dp"
         android:layout_marginRight="45dp"
-        android:background="@drawable/input_admin" />
+        android:background="@drawable/input_admin"
+        android:autofillHints="@null" />
 
 
     <EditText
@@ -54,10 +57,11 @@
         android:inputType="textMultiLine"
         android:layout_marginTop="6dp"
         android:padding="20dp"
-        android:hint="Product Price..."
+        android:hint="@string/product_price"
         android:layout_marginLeft="45dp"
         android:layout_marginRight="45dp"
-        android:background="@drawable/input_admin" />
+        android:background="@drawable/input_admin"
+        android:autofillHints="@null" />
 
 
     <Button
@@ -65,7 +69,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/product_price"
-        android:text="Add Product"
+        android:text="@string/add_product"
         android:layout_marginLeft="45dp"
         android:layout_marginRight="45dp"
         android:padding="17dp"

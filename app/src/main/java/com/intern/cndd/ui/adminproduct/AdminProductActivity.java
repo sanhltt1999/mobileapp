@@ -180,6 +180,7 @@ public class AdminProductActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
+                            finish();
                             Intent intent = new Intent(AdminProductActivity.this, AdminHomeActivity.class);
                             startActivity(intent);
 

@@ -1,15 +1,5 @@
 package com.intern.cndd.ui.detailorder;
 
-<<<<<<< HEAD
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
-
-import com.intern.cndd.R;
-
-public class DetailOrderActivity extends AppCompatActivity {
-
-=======
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -36,13 +26,10 @@ public class DetailOrderActivity extends AppCompatActivity {
     private String userID = "";
     private List<Products> mProducts = new ArrayList<>();
 
->>>>>>> 2f76b5688ded0286a8f86d81b2b8c7f9de917be5
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_order);
-<<<<<<< HEAD
-=======
 
         userID = getIntent().getExtras().getString("uid");
 
@@ -74,6 +61,5 @@ public class DetailOrderActivity extends AppCompatActivity {
             }
         });
 
->>>>>>> 2f76b5688ded0286a8f86d81b2b8c7f9de917be5
     }
 }

@@ -143,8 +143,7 @@ public class DetailActivity extends AppCompatActivity {
                                             if (task.isSuccessful()) {
                                                 Toast.makeText(DetailActivity.this, "Added to Cart List", Toast.LENGTH_SHORT).show();
 
-                                                Intent intent = new Intent(DetailActivity.this, HomeActivity.class);
-                                                startActivity(intent);
+                                                finish();
 
                                             }
                                         }
