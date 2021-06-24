@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="24dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.adminhome.AdminHomeActivity">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/designImageView"
+        android:layout_width="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="190dp"
+        android:background="@drawable/design"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.SelectedCornerRadius2"
+        tools:ignore="ObsoleteLayoutParam"
+        android:layout_alignParentRight="true" />
+
+    <TextView
+        android:textSize="20sp"
+        android:textColor="@color/primary"
+        android:textStyle="bold"
+        android:layout_marginTop="4dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/design"/>
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/itemImageView"
+        android:layout_width="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="190dp"
+        android:background="@drawable/item"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.SelectedCornerRadius2"
+        tools:ignore="ObsoleteLayoutParam"
+        android:layout_alignParentRight="true" />
+
+    <TextView
+        android:textSize="20sp"
+        android:textColor="@color/primary"
+        android:textStyle="bold"
+        android:layout_marginTop="4dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/item"/>
+
+
+
+    <Button
+        android:id="@+id/checkButton"
+        android:background="@drawable/buttons_edit"
+        android:layout_width="match_parent"
+        android:layout_marginTop="48dp"
+        android:textColor="@color/white"
+        android:layout_height="wrap_content"
+        android:text="@string/check_new_order"/>
+
+    <Button
+        android:id="@+id/logoutButton"
+        android:background="@drawable/buttons_edit"
+        android:layout_width="match_parent"
+        android:textColor="@color/white"
+        android:layout_marginTop="8dp"
+        android:layout_height="wrap_content"
+        android:text="@string/logout"/>
+</LinearLayout>
